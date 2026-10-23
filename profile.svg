@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-label="Placeholder portrait with the letter J">
+  <rect width="400" height="500" fill="#ffd23f"/>
+  <circle cx="200" cy="190" r="78" fill="#111"/>
+  <path d="M60 500c0-110 62-170 140-170s140 60 140 170z" fill="#111"/>
+  <text x="200" y="222" text-anchor="middle" font-family="monospace" font-size="96" font-weight="700" fill="#ffd23f">J</text>
+</svg>
