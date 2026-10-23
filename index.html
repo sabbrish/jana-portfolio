@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jananarthan | Portfolio</title>
+<meta name="description" content="Portfolio of Jananarthan, a student and beginner web developer.">
+<style>
+/* Neo-brutalist style: thick borders, hard shadows, monospace headings */
+:root{--bg:#fff7e0;--surface:#ffffff;--text:#111111;--muted:#3d3d3d;--accent:#6c4cff;--accent-d:#4b2fd6;--on-accent:#ffffff;--border:#111111;--hl:#ffd23f;--shadow:#111111;--r:0px;
+--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Courier New",monospace}
+[data-theme="dark"]{--bg:#0e0f14;--surface:#171922;--text:#f5f5f5;--muted:#c3c6d1;--accent:#a99bff;--accent-d:#c8bfff;--on-accent:#0e0f14;--border:#f5f5f5;--hl:#ffd23f;--shadow:#a99bff}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;
+background-image:radial-gradient(var(--border) 1px,transparent 1px);background-size:26px 26px;background-attachment:fixed}
+[data-theme="dark"] body{background-image:radial-gradient(#2a2d3a 1px,transparent 1px)}
+img,svg{max-width:100%;height:auto;display:block}
+a{color:var(--accent);font-weight:600}
+:focus-visible{outline:4px solid var(--hl);outline-offset:3px;box-shadow:0 0 0 7px var(--text)}
+.container{width:min(1100px,92%);margin-inline:auto}
+.skip{position:absolute;left:-999px;top:8px;background:var(--hl);color:#111;padding:8px 14px;z-index:100;border:3px solid #111;font-weight:700}
+.skip:focus{left:8px}
+
+.site-header{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:4px solid var(--border)}
+.bar{display:flex;align-items:center;gap:16px;padding:12px 0;flex-wrap:wrap}
+.logo{font-family:var(--mono);font-weight:800;font-size:1.3rem;color:var(--text);text-decoration:none;margin-right:auto;background:var(--hl);color:#111;padding:4px 12px;border:3px solid #111;box-shadow:4px 4px 0 var(--shadow)}
+.logo::before{content:"</> "}
+.nav ul{display:flex;gap:6px;list-style:none;margin:0;padding:0}
+.nav a{display:block;padding:6px 12px;color:var(--text);text-decoration:none;font-family:var(--mono);font-weight:700;border:3px solid transparent}
+.nav a:hover{border-color:var(--border)}
+.nav a.active{background:var(--accent);color:var(--on-accent);border-color:var(--border);box-shadow:3px 3px 0 var(--shadow)}
+.menu-btn{display:none;font:inherit;font-family:var(--mono);font-weight:700;background:var(--surface);color:var(--text);border:3px solid var(--border);padding:8px 14px;cursor:pointer;box-shadow:3px 3px 0 var(--shadow)}
+
+.btn{font:inherit;font-family:var(--mono);font-weight:700;display:inline-block;padding:10px 22px;border:3px solid var(--border);cursor:pointer;text-decoration:none;box-shadow:5px 5px 0 var(--shadow);transition:transform .12s,box-shadow .12s}
+.btn:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--shadow)}
+.btn:active{transform:translate(5px,5px);box-shadow:0 0 0 var(--shadow)}
+.btn-solid{background:var(--accent);color:var(--on-accent)}
+.btn-ghost{background:var(--surface);color:var(--text);padding:8px 16px}
+
+.hero{display:grid;grid-template-columns:1.2fr 1fr;align-items:center;gap:40px;padding:64px 0 32px}
+h1{font-family:var(--mono);font-size:clamp(2.3rem,6.4vw,4.2rem);line-height:1.08;margin:0 0 14px;letter-spacing:-.03em;word-break:break-word}
+h1::after{content:"_";color:var(--accent);animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){h1::after{animation:none}}
+.role{font-family:var(--mono);font-size:clamp(1.1rem,2.8vw,1.5rem);line-height:1.3;margin:0 0 14px;display:inline-block;background:var(--hl);color:#111;padding:4px 10px;border:3px solid #111}
+.lead{color:var(--muted);max-width:60ch;margin:0 0 24px;font-size:1.05rem}
+.pills{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;margin:30px 0 0}
+.pill{padding:4px 16px;font-family:var(--mono);font-weight:700;color:#111;border:3px solid #111;box-shadow:3px 3px 0 var(--shadow)}
+.p1{background:#ff9f68}.p2{background:#7fd4ff}.p3{background:#ffd23f}.p4{background:#3ddc97}
+.hero-art{max-width:380px;margin-inline:auto;width:100%;border:4px solid var(--border);box-shadow:12px 12px 0 var(--accent);background:var(--hl);transform:rotate(2deg)}
+.photo{width:100%;aspect-ratio:4/5;object-fit:cover}
+
+.section{padding:52px 0}
+h2{font-family:var(--mono);font-size:clamp(1.6rem,4vw,2.2rem);margin:0 0 24px;display:inline-block;border-bottom:6px solid var(--accent);padding-bottom:2px}
+h2::before{content:"# ";color:var(--accent)}
+h3{font-family:var(--mono);margin:0 0 10px;font-size:1.15rem}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:980px}
+.about-grid p{margin:0;max-width:62ch;background:var(--surface);border:3px solid var(--border);box-shadow:6px 6px 0 var(--shadow);padding:20px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.card,.project{background:var(--surface);border:3px solid var(--border);box-shadow:7px 7px 0 var(--shadow);padding:20px}
+.tags{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
+.tags li{background:var(--hl);color:#111;padding:2px 10px;font-family:var(--mono);font-size:.88rem;font-weight:700;border:2px solid #111}
+
+.filters{display:flex;gap:10px;margin-bottom:26px;flex-wrap:wrap}
+.chip{font:inherit;font-family:var(--mono);font-weight:700;padding:6px 18px;border:3px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;box-shadow:3px 3px 0 var(--shadow)}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+.project{padding:0;overflow:hidden;transition:transform .15s}
+.project:hover{transform:translate(-3px,-3px)}
+.project[hidden]{display:none}
+.project>svg{padding:18px 18px 10px;border-bottom:3px solid var(--border)}
+.c1>svg{background:#ffe9a8}.c2>svg{background:#bff2dc}.c3>svg{background:#d9d0ff}
+.p-body{padding:16px 20px 20px}
+.p-body p{margin:0 0 8px;color:var(--muted);font-size:.95rem}
+.p-body .note{font-family:var(--mono);font-size:.85rem;margin-top:12px}
+
+form{max-width:580px;margin-top:22px;background:var(--surface);border:3px solid var(--border);box-shadow:8px 8px 0 var(--shadow);padding:24px}
+.field{margin-bottom:16px}
+label{display:block;font-family:var(--mono);font-weight:700;margin-bottom:4px}
+input,textarea{width:100%;font:inherit;padding:10px 12px;border:3px solid var(--border);border-radius:0;background:var(--bg);color:var(--text)}
+input[aria-invalid="true"],textarea[aria-invalid="true"]{border-color:#c0261a;background:#fff0ee;color:#111}
+.err{display:block;color:#c0261a;font-size:.9rem;font-weight:600;min-height:1.2em}
+[data-theme="dark"] .err{color:#ff9d92}
+#formStatus{margin:14px 0 0;font-weight:700}
+
+.footer{border-top:4px solid var(--border);padding:20px 0;margin-top:40px;background:var(--hl);color:#111;font-family:var(--mono);font-weight:700}
+.footer a{color:#111}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.foot p{margin:0}
+.to-top{position:fixed;right:18px;bottom:18px;z-index:40;font:inherit;font-family:var(--mono);font-weight:700;padding:10px 16px;border:3px solid var(--border);background:var(--hl);color:#111;cursor:pointer;box-shadow:4px 4px 0 var(--shadow)}
+.to-top[hidden]{display:none}
+
+@media (max-width:900px){.grid3{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){
+  .hero,.about-grid,.grid3{grid-template-columns:1fr}
+  .hero{padding-top:32px}.hero-art{order:-1;max-width:240px}
+  .menu-btn{display:block}
+  .talk{display:none}
+  .nav{display:none;order:5;width:100%}
+  .nav.open{display:block}
+  .nav ul{flex-direction:column}
+}
+.hero-text .btn{margin:0 10px 12px 0}
+
+</style>
+<script defer>
+window.addEventListener("DOMContentLoaded",function(){
+(function () {
+  'use strict';
+  var root = document.documentElement;
+
+  function store(k, v) {
+    try { if (v === undefined) { return localStorage.getItem(k); } localStorage.setItem(k, v); } catch (e) { return null; }
+  }
+
+  /* Feature 1: light and dark theme toggle */
+  var themeBtn = document.getElementById('themeToggle');
+  function applyTheme(t) {
+    root.setAttribute('data-theme', t);
+    themeBtn.setAttribute('aria-pressed', String(t === 'dark'));
+    themeBtn.textContent = t === 'dark' ? 'Light' : 'Dark';
+    themeBtn.setAttribute('aria-label', t === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+  }
+  var saved = store('theme');
+  applyTheme(saved || (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+  themeBtn.addEventListener('click', function () {
+    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next); store('theme', next);
+  });
+
+  /* Feature 2: mobile navigation menu */
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('nav');
+  function setMenu(open) {
+    nav.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.textContent = open ? 'Close' : 'Menu';
+  }
+  menuBtn.addEventListener('click', function () { setMenu(!nav.classList.contains('open')); });
+  nav.addEventListener('click', function (e) { if (e.target.tagName === 'A') { setMenu(false); } });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { setMenu(false); } });
+
+  /* Feature 3: project filter buttons */
+  var chips = document.querySelectorAll('.chip');
+  var projects = document.querySelectorAll('.project');
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      var f = chip.getAttribute('data-filter');
+      chips.forEach(function (c) { c.setAttribute('aria-pressed', String(c === chip)); });
+      projects.forEach(function (p) { p.hidden = !(f === 'all' || p.getAttribute('data-cat') === f); });
+    });
+  });
+
+  /* Feature 4: contact form validation with a clear confirmation */
+  var form = document.getElementById('contactForm');
+  var status = document.getElementById('formStatus');
+  function check(id, errId, msg, test) {
+    var input = document.getElementById(id), err = document.getElementById(errId);
+    var ok = test(input.value.trim());
+    err.textContent = ok ? '' : msg;
+    input.setAttribute('aria-invalid', String(!ok));
+    return ok;
+  }
+  if (form) form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var a = check('name', 'nameErr', 'Enter your name.', function (v) { return v.length > 0; });
+    var b = check('email', 'emailErr', 'Enter a valid email address, like name@example.com.', function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); });
+    var c = check('message', 'msgErr', 'Write a message of at least 10 characters.', function (v) { return v.length >= 10; });
+    if (a && b && c) {
+      status.textContent = 'Your message looks good. This demo form cannot send messages, so please email me directly at your.email@example.com.';
+      form.reset();
+    } else {
+      status.textContent = 'Please fix the highlighted fields.';
+    }
+  });
+
+  /* Feature 5: back-to-top button */
+  var toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', function () { toTop.hidden = window.scrollY < 400; }, { passive: true });
+  toTop.addEventListener('click', function () { window.scrollTo({ top: 0 }); });
+
+
+  /* Feature 6: highlight the nav link for the section in view */
+  var links = document.querySelectorAll('.nav a');
+  var secs = document.querySelectorAll('section[data-nav]');
+  function spy() {
+    var y = window.scrollY + 120, cur = 'home';
+    secs.forEach(function (s) { if (s.offsetTop <= y) { cur = s.id; } });
+    if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 4) { cur = 'contact'; }
+    if (cur === 'skills') { cur = 'about'; }
+    links.forEach(function (a) {
+      var on = a.getAttribute('href') === '#' + cur;
+      a.classList.toggle('active', on);
+      if (on) { a.setAttribute('aria-current', 'true'); } else { a.removeAttribute('aria-current'); }
+    });
+  }
+  window.addEventListener('scroll', spy, { passive: true });
+  window.addEventListener('resize', spy);
+  spy();
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+})();
+
+});
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="laptop" viewBox="0 0 200 130">
+    <rect x="30" y="8" width="140" height="92" rx="8" fill="#1f2937"/>
+    <rect x="38" y="16" width="124" height="76" rx="3" fill="#ffffff"/>
+    <path d="M10 108h180l-12 12H22z" fill="#9ca3af"/>
+  </symbol>
+</svg>
+
+<header class="site-header">
+  <div class="container bar">
+    <a class="logo" href="#home">Jananarthan</a>
+    <button id="menuBtn" class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" class="nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="#home" class="active" aria-current="true">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button id="themeToggle" class="btn btn-ghost" type="button" aria-pressed="false" aria-label="Dark theme">Dark</button>
+    <a class="btn btn-solid talk" href="#contact">Let’s talk</a>
+  </div>
+</header>
+
+<main id="main">
+  <section id="home" class="hero container" data-nav>
+    <div class="hero-text">
+      <h1>Hi, I’m Jananarthan.</h1>
+      <p class="role">Beginner web developer and Computer Science student.</p>
+      <p class="lead">I enjoy learning how websites and apps work, and building small projects that are clear and easy to use.</p>
+      <a class="btn btn-solid" href="#projects">View my projects</a> <a class="btn btn-ghost" href="#contact">Contact me</a>
+      <ul class="pills" aria-label="Main skills">
+        <li class="pill p1">HTML</li><li class="pill p2">CSS</li><li class="pill p3">JavaScript</li><li class="pill p4">Python</li>
+      </ul>
+    </div>
+    <div class="hero-art">
+      <img class="photo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgNTAwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlBsYWNlaG9sZGVyIHBvcnRyYWl0IHdpdGggdGhlIGxldHRlciBKIj4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2ZmZDIzZiIvPgogIDxjaXJjbGUgY3g9IjIwMCIgY3k9IjE5MCIgcj0iNzgiIGZpbGw9IiMxMTEiLz4KICA8cGF0aCBkPSJNNjAgNTAwYzAtMTEwIDYyLTE3MCAxNDAtMTcwczE0MCA2MCAxNDAgMTcweiIgZmlsbD0iIzExMSIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9Ijk2IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZkMjNmIj5KPC90ZXh0Pgo8L3N2Zz4K" width="400" height="500" alt="Placeholder portrait of Jananarthan">
+    </div>
+  </section>
+  <section id="about" class="container section" data-nav>
+    <h2>About me</h2>
+    <div class="about-grid">
+      <p>I’m Jananarthan, a student who enjoys turning ideas into websites and apps that people can open and use. (Edit this paragraph with your college, course and year.)</p>
+      <p>I’m building my skills in web development and programming, and I’m always learning something new. (Add your courses, certificates and goals here.)</p>
+    </div>
+  </section>
+  <section id="skills" class="container section">
+    <h2>Skills</h2>
+    <div class="grid3">
+      <article class="card"><h3>Web</h3><ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul></article>
+      <article class="card"><h3>Programming and cloud</h3><ul class="tags"><li>Python</li><li>Cloud computing basics</li><li>Learning more every week</li></ul></article>
+      <article class="card"><h3>Other</h3><ul class="tags"><li>Teamwork</li><li>Problem solving</li><li>Tamil and English</li></ul></article>
+    </div>
+  </section>
+  <section id="projects" class="container section" data-nav>
+    <h2>Projects</h2>
+    <div class="filters" role="group" aria-label="Filter projects">
+      <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" class="chip" data-filter="web" aria-pressed="false">Web</button>
+      <button type="button" class="chip" data-filter="idea" aria-pressed="false">Idea</button>
+    </div>
+    <div class="grid3" id="projectGrid">
+      <article class="project c1" data-cat="web">
+        <svg viewBox="0 0 200 130" role="img" aria-label="Laptop showing a website with a grid of tiles"><use href="#laptop"/>
+          <rect x="46" y="24" width="108" height="10" rx="3" fill="#ffd23f"/>
+          <rect x="46" y="42" width="32" height="42" rx="3" fill="#ff5d73"/><rect x="84" y="42" width="32" height="42" rx="3" fill="#ffd23f"/><rect x="122" y="42" width="32" height="42" rx="3" fill="#ff5d73"/></svg>
+        <div class="p-body">
+          <h3>Project One</h3>
+          <p>A short description of your first web project. (Edit this text.)</p>
+          <p><strong>Tools:</strong> HTML, CSS, JavaScript</p>
+          <p><strong>What I learned:</strong> what you learned from this project. (Edit this text.)</p>
+          <p class="note">Not published online yet.</p>
+        </div>
+      </article>
+      <article class="project c2" data-cat="web">
+        <svg viewBox="0 0 200 130" role="img" aria-label="Laptop showing a website with a banner and a list"><use href="#laptop"/>
+          <rect x="46" y="24" width="108" height="30" rx="3" fill="#3ddc97"/>
+          <rect x="46" y="62" width="108" height="6" rx="3" fill="#d1d5db"/><rect x="46" y="74" width="80" height="6" rx="3" fill="#d1d5db"/></svg>
+        <div class="p-body">
+          <h3>Project Two</h3>
+          <p>A short description of your second web project. (Edit this text.)</p>
+          <p><strong>Tools:</strong> HTML, CSS, JavaScript</p>
+          <p><strong>What I learned:</strong> what you learned from this project. (Edit this text.)</p>
+          <p class="note">Not published online yet.</p>
+        </div>
+      </article>
+      <article class="project c3" data-cat="idea">
+        <svg viewBox="0 0 200 130" role="img" aria-label="Laptop showing a map with a route between two location pins"><use href="#laptop"/>
+          <path d="M60 78c20-40 40 10 80-34" fill="none" stroke="#6c4cff" stroke-width="3" stroke-dasharray="5 4"/>
+          <circle cx="60" cy="78" r="6" fill="#ff5d73"/><circle cx="140" cy="44" r="6" fill="#ff5d73"/></svg>
+        <div class="p-body">
+          <h3>Project Idea</h3>
+          <p>A short description of an idea you want to build. (Edit this text.)</p>
+          <p><strong>Tools:</strong> Python</p>
+          <p><strong>What I learned:</strong> turning an idea into a feature plan. (Edit this text.)</p>
+          <p class="note">Idea stage only, so there is no live link.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+  <section id="contact" class="container section" data-nav>
+    <h2>Contact</h2>
+    <p class="lead">Want to say hello? Email me at <a href="mailto:your.email@example.com">your.email@example.com</a> or use the form below.</p>
+    <form id="contactForm" novalidate>
+      <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" autocomplete="name" required><span class="err" id="nameErr"></span></div>
+      <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required><span class="err" id="emailErr"></span></div>
+      <div class="field"><label for="message">Message</label><textarea id="message" name="message" rows="4" required></textarea><span class="err" id="msgErr"></span></div>
+      <button class="btn btn-solid" type="submit">Check message</button>
+      <p id="formStatus" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container foot">
+    <p>© <span id="year">2026</span> Jananarthan</p>
+    <p><a href="#projects">Projects</a> | <a href="#contact">Contact</a></p>
+  </div>
+</footer>
+
+<button id="toTop" class="to-top" type="button" aria-label="Back to top" hidden>Top</button>
+</body>
+</html>
